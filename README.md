@@ -1,1 +1,1 @@
-﻿# OrderApp using React.js and CCss.
+﻿# OrderApp using React.js and Css.
