@@ -1,21 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Header from "./components/Layout/Header";
 import MainImg from "./components/Layout/MainImg";
 import Meals from "./components/Meals/Meals";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import ModalContext from "./store/modal-context";
+
 const App = () => {
-  const [isCartShown, setIsCartShown] = useState(false);
-  const showCartHandler = () => {
-    setIsCartShown(true);
-  };
-  const hideCartHandler = () => {
-    setIsCartShown(false);
-  };
+  const modalCtx = useContext(ModalContext);
   return (
     <CartProvider>
-      {isCartShown && <Cart onClose={hideCartHandler} />}
-      <Header onShowCart={showCartHandler} />
+      {modalCtx.isVisible && <Cart />}
+      <Header />
       <MainImg />
       <main>
         <Meals />

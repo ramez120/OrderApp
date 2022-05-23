@@ -1,11 +1,14 @@
 import React, { useContext, useState, useEffect } from "react";
 import CartIcon from "../Cart/CartIcon";
 import CartContext from "../../store/cart-context";
+import ModalContext from "../../store/modal-context";
 
 import classes from "./HeaderCartButton.module.css";
 
 const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
+  const modalCtx = useContext(ModalContext);
+
   const { items } = cartCtx;
   const [btnIsHighLighted, setBtnIsHighlighted] = useState(false);
   const numberOfCartItems = items.reduce((currentValue, item) => {
@@ -24,7 +27,7 @@ const HeaderCartButton = (props) => {
     };
   }, [items]);
   return (
-    <button className={btnClasses} onClick={props.onClick}>
+    <button className={btnClasses} onClick={modalCtx.showModal}>
       <span className={classes.icon}>
         <CartIcon />
       </span>
